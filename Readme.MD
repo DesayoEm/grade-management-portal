@@ -1,6 +1,6 @@
-# Grade-Management-System
+###Grade-Management-System
 </br>
-A simple CLI gradebook system that allows a teacher to manage students’ grades and calculate various statistics. The program handles multiple students, subjects, and grade entries, with features for retrieving and updating data.</br>
+A simple CLI gradebook system that allows a teacher to manage students’ grades and calculate various statistics. The program handles multiple students, subjects, and grade entries, with features for retrieving and updating data.</br></br>
 CREATED FOR PRACTICING dictionaries, JSON serialization, reading and writing to JSON files, decision structures, and functions </br></br>
 Key Features:</br>
 Add new students and their subjects.</br>
