@@ -187,6 +187,36 @@ def view_failing_students():
 
     print()
 
+def update_student_grade(student_name: str):
+    """
+    This function finds a student by passing in their username as a string and updates their score
+    :param student_name:str
+    :return:None
+    """
+    student_to_update=student_grade_data.get(student_name)
+
+    #If the student is found
+    if student_to_update:
+        subject_to_update=input("Enter the subject you wish to upgrade: ")
+        # loop through the dictionary to access the subject
+        scores=student_grade_data[student_name]["subjects"]
+        for subject in scores:
+            #if the subject entered is present
+            if subject_to_update.casefold()==subject.casefold():
+                #Enter and Validate the new score using the validate score function
+                new_score=validate_score(subject)
+                scores[subject]=new_score
+                print(f"{(student_name).title()}'s new {subject} score is {new_score}")
+                with open('data.json', 'w', encoding='utf-8') as data_file:
+                    json.dump(data, data_file, indent=4)
+                break
+
+            else:
+                print(f"{subject} is not listed in {student_name}'s courses")
+
+    else:#If student is not found
+        print (f"{student_name} NOT FOUND.\nPlease check your spelling\n")
+
 while option != 8:
     print("SELECT FROM THE OPTIONS BELOW:")
     print("Select '1' to add a student")
@@ -222,7 +252,7 @@ while option != 8:
         view_failing_students()
     elif option== 5:
         student_name=input("Enter a student's name to upgrade their grade: ")
-        update_student_grade(student_name)
+        update_student_grade(student_name.casefold())
     elif option == 6:
         student_name=input("Enter a student's name to delete them: ")
         remove_student(student_name)
