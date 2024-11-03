@@ -8,7 +8,7 @@ student_grade_data_original=data["students"]#Preserve Casing
 
 # Use a dictionary comprehension to create a case-insensitive keys for lookup
 student_grade_data = {name.casefold(): info for name, info in student_grade_data_original.items()}
-print(student_grade_data)
+
 
 #Inspect the data
 # for student, grades in student_grade_data.items():
@@ -138,6 +138,39 @@ def calculate_student_average_score(student_name: str) ->None:
     print(f"{student_name.title()}'s average score is {average_grade}")
     print()
 
+
+def find_top_student():
+    """
+     This function ind the student with the highest average score.
+
+     :param students: A dictionary where keys are student names and values are lists of tuples,
+                      each containing a subject and the corresponding score.
+     :return: None
+     """
+    average_scores=[]
+    score_list=[]
+    top_student=""
+    student_grade_pair={}
+    for student, grades in student_grade_data_original.items():
+
+        subjects=grades["subjects"]
+        #Pull the number of subjects from the length of the subjects dict
+        no_of_subjects=len(subjects)
+        #Sum up all grades by accessing the scores in each subject'
+        total_grades=sum(score for _, score in subjects.items())
+        #calculate average grade
+        average_grade=round(total_grades/no_of_subjects)
+        #Bind each student's average grade to a list of every student's scores
+        score_list.append(average_grade)
+        #pair each student's average grade with their name in a new dictionary
+        student_grade_pair.update({student:average_grade})
+    # print all the student:grade pairs to inspect the data
+    # print(student_grade_pair)
+
+    # Find the student with the maximum average score
+    top_student = max(student_grade_pair, key=student_grade_pair.get)
+    max_value = student_grade_pair[top_student]
+    print(f"The top student is {top_student} with an average score of {max_value}\n")
 
 
 while option != 8:
