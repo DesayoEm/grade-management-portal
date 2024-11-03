@@ -1,56 +1,17 @@
 
-# def find_top_student():
-#     """
-#      This function ind the student with the highest average score.
-#
-#      :param students: A dictionary where keys are student names and values are lists of tuples,
-#                       each containing a subject and the corresponding score.
-#      :return: None
-#      """
-#     average_scores=[]
-#     score_list=[]
-#     top_student=""
-#     for student, subjects in students.items():
-#         #bind each student's dictionary value to the variable 'grade_data'
-#
-#         #Pull the number of subjects from the length of the grade_data list
-#         no_of_subjects=len(subjects)
-#
-#         #Sum up all grades by accessing the scores in the tuple for each subject in 'grade_data'
-#         total_grades=sum(score for _, score in subjects)
-#
-#         #calculate average grade
-#         average_grade=round(total_grades/no_of_subjects)
-#
-#         #Bind each student's average grade to a list of every student's scores
-#         score_list.append(average_grade)
-#
-#         #pair each student's average grade with their name in a new dictionary
-#         stud_grade_pair= {student:average_grade}
-#
-#         average_scores.append(stud_grade_pair)
-#     max_value=max(score_list)
-#     for item in average_scores:
-#         for name, value in item.items():
-#             if value==max_value:
-#                 top_student=name
-#     print(f"The top student is {top_student} with an average score of {max_value}")
-#     print()
-#
-#
-# def view_failing_students():
-#     """
-#     This function checks each student's scores in Math, Science, and History.
-#     If a student has a grade below the fail treshold,it prints a message indicating the subject they are failing in.
-#     """
-#     fail_treshold=40
-#     for student, subjects in students.items():
-#         for subject, grade in subjects:
-#             #Print a message if score is below 40
-#             if grade<fail_treshold:
-#                 print(f"{student} failed {subject} with a score of {grade}")
-#
-#     print()
+def view_failing_students():
+    """
+    This function checks each student's scores in Math, Science, and History.
+    If a student has a grade below the fail treshold,it prints a message indicating the subject they are failing in.
+    """
+    fail_treshold=40
+    for student, subjects in students.items():
+        for subject, grade in subjects:
+            #Print a message if score is below 40
+            if grade<fail_treshold:
+                print(f"{student} failed {subject} with a score of {grade}")
+
+    print()
 #
 # def update_student_grade(student_name: str):
 #     """

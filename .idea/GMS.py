@@ -172,6 +172,20 @@ def find_top_student():
     max_value = student_grade_pair[top_student]
     print(f"The top student is {top_student} with an average score of {max_value}\n")
 
+def view_failing_students():
+    """
+    This function checks each student's scores in Math, Science, and History.
+    If a student has a grade below the fail treshold,it prints a message indicating the subject they are failing in.
+    """
+    fail_treshold=40
+    for student, grades in student_grade_data_original.items():
+        subjects=grades["subjects"]
+        for subject, score in subjects.items():
+            #Print a message if score is below 40
+            if score<fail_treshold:
+                print(f"{student} failed {subject} with a score of {score}")
+
+    print()
 
 while option != 8:
     print("SELECT FROM THE OPTIONS BELOW:")
