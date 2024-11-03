@@ -7,12 +7,19 @@ with open('data.json', encoding='utf-8') as data_file:
 student_grade_data_original=data["students"]#Preserve Casing
 
 # Use a dictionary comprehension to create a case-insensitive keys for lookup
-student_grade_data = {name.casefold(): info for name, info in student_grade_data_original.items()}
-
+student_grade_data = {name.casefold(): info for name, info in data["students"].items()}
 
 #Inspect the data
 # for student, grades in student_grade_data.items():
 #         print(student, grades, "\n")
+
+def refresh_student_grade_data():
+    """
+   Rebuilds the case-insensitive `student_grade_data` dictionary
+   from the `student_grade_data_original` dictionary.
+   """
+    student_grade_data_original
+    student_grade_data={name.casefold(): info for name, info in student_grade_data_original.items()}
 
 option=""
 def see_all_students() ->None:
@@ -75,7 +82,7 @@ def add_student():
         new_student_name=input("Enter the student's first and last name: " )
         #Perform a case insensitive search of the dictionary
         if new_student_name.casefold() in student_grade_data:
-            print(f"{new_student_name.upper()} ALREADY EXISTS.", "\n","See their grades below:")
+            print(f"{new_student_name.title()} ALREADY EXISTS.", "\n","See their grades below:")
 
             for subject, grades in student_grade_data[new_student_name].items():
                 for each_subject, value in grades.items():
@@ -118,12 +125,12 @@ def calculate_student_average_score(student_name: str) ->None:
     :param student_name: The name of the student whose average score is to be calculated.
     :return: None
     """
-    if student_name.casefold() not in student_grade_data:#If student is not found
+    if student_name.casefold() not in student_grade_data and student_name.title() not in student_grade_data_original:#If student is not found
         print(f"{student_name.title()} does not exist. \nDouble check your spelling or add a new student in the main menu.")
         return None
     #If student exists,create an empty list, itereate through the scores in the dictionary and append it to the list
     all_grades=[]
-    grade_data = student_grade_data[student_name.casefold()]["subjects"]
+    grade_data = student_grade_data_original[student_name.title()]["subjects"]
     for subject, score in grade_data. items():
         all_grades. append(score)
     #Get the number of subjects from the length of the all grades list
@@ -193,13 +200,13 @@ def update_student_grade(student_name: str):
     :param student_name:str
     :return:None
     """
-    student_to_update=student_grade_data.get(student_name)
+    student_to_update=student_grade_data_original.get(student_name.title())
 
     #If the student is found
     if student_to_update:
         subject_to_update=input("Enter the subject you wish to upgrade: ")
-        # loop through the dictionary to access the subject
-        scores=student_grade_data[student_name]["subjects"]
+        scores=student_grade_data_original[student_name.title()]["subjects"]
+
         for subject in scores:
             #if the subject entered is present
             if subject_to_update.casefold()==subject.casefold():
@@ -215,7 +222,33 @@ def update_student_grade(student_name: str):
                 print(f"{subject} is not listed in {student_name}'s courses")
 
     else:#If student is not found
-        print (f"{student_name} NOT FOUND.\nPlease check your spelling\n")
+        print (f"{(student_name.title())} NOT FOUND.\nPlease check your spelling\n")
+        print()
+
+
+def remove_student(student_name:str):
+    """
+    Deletes a student from the 'students' dictionary.
+
+    :param student_name: The name of the student to be removed.
+    :return: None
+    """
+    student_to_delete=student_grade_data_original.get(student_name.title())
+    #If the student is found
+    if student_to_delete:
+        del student_grade_data_original[student_name.title()]
+        print(f"Deleted {(student_name).title()}!")
+
+        print()
+
+        with open('data.json', 'w', encoding='utf-8') as data_file:
+            json.dump(data, data_file, indent = 4)
+        refresh_student_grade_data()
+        see_all_students()
+        #deleted data can still be accessed unless the program runs again. Figure out why refresh_student_grade_data() dosen't work
+    else:#If student is not found
+        print (f"{student_name} does not exist.\nYou can't delete non-existent data")
+        print()
 
 while option != 8:
     print("SELECT FROM THE OPTIONS BELOW:")
@@ -255,7 +288,7 @@ while option != 8:
         update_student_grade(student_name.casefold())
     elif option == 6:
         student_name=input("Enter a student's name to delete them: ")
-        remove_student(student_name)
+        remove_student(student_name.casefold())
     elif option== 7:
         display_all_students_and_average_grades()
 
