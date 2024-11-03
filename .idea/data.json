@@ -7,13 +7,6 @@
                 "History": 78
             }
         },
-        "Moria Kincaid": {
-            "subjects": {
-                "Math": 99,
-                "Science": 45,
-                "History": 60
-            }
-        },
         "Lola Pratt": {
             "subjects": {
                 "Math": 85,
@@ -65,7 +58,7 @@
         },
         "Amina Yusuf": {
             "subjects": {
-                "Math": 60,
+                "Math": 30,
                 "Science": 75,
                 "History": 70
             }
@@ -91,32 +84,32 @@
                 "History": 45
             }
         },
-        "Asiko B": {
+        "Xu Wenwu": {
             "subjects": {
-                "Math": 59,
-                "Science": 89,
-                "History": 65
+                "Math": 80,
+                "Science": 45,
+                "History": 90
             }
         },
-        "Ori Ade": {
+        "Ade Tiger": {
             "subjects": {
-                "Math": 90,
-                "Science": 87,
-                "History": 96
+                "Math": 89,
+                "Science": 83,
+                "History": 95
             }
         },
-        "Desayo Em": {
+        "Nidal Sharma": {
             "subjects": {
-                "Math": 98,
-                "Science": 89,
-                "History": 97
+                "Math": 34,
+                "Science": 69,
+                "History": 61
             }
         },
-        "Ade Xe": {
+        "Tola Agreste": {
             "subjects": {
-                "Math": 4,
-                "Science": 4,
-                "History": 4
+                "Math": 40,
+                "Science": 49,
+                "History": 20
             }
         }
     }
