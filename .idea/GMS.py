@@ -250,6 +250,22 @@ def remove_student(student_name:str):
         print (f"{student_name} does not exist.\nYou can't delete non-existent data")
         print()
 
+def display_all_students_and_average_grades():
+    """
+     This function calculates and displays the average grade for each student in the 'students' dictionary.
+     It assumes that 'students' is a dictionary where each key is a student's name and the value is a list
+     of tuples, where each tuple contains a subject and the corresponding grade.
+
+     :return: None
+     """
+
+    total_score=0
+    for student, value in student_grade_data_original.items():
+        for _, scores in value.items():
+            total=sum(scores.values())
+            average_grades= total // len(scores)
+            print (f"{student} \t {average_grades}")
+
 while option != 8:
     print("SELECT FROM THE OPTIONS BELOW:")
     print("Select '1' to add a student")
