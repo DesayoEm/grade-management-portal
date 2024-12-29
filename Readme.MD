@@ -7,7 +7,7 @@
 - In-memory case-insensitive student lookup optimization
 
 ### Data Model
-- Student records with fixed subject matrix (Mathematics, Science, History)
+- Student records with fixed subjects (Mathematics, Science, History)
 - Grade storage with score validation (0-100 range)
 - Basic academic performance metrics
 
@@ -30,7 +30,7 @@
    - Duplicate entry prevention
    - Input type verification
 
-## V2.0 (Planned Enterprise Migration)
+## V2.0 (Planned Migration)
 ### System Architecture
 1. Backend Infrastructure
    - FastAPI-based RESTful API
@@ -69,9 +69,8 @@
 
 2. User Hierarchy
    - Administrative staff
-   - Academic advisors
    - Students
-   - Parent/Guardian access
+   
 
 ### Advanced Features
 1. Academic Workflow
@@ -111,18 +110,7 @@
    - CORS configuration
    - Audit logging
 
-### Deployment Considerations
-1. Infrastructure Requirements
-   - Server specifications
-   - Database scaling
-   - File storage configuration
-   - Backup protocols
 
-2. Monitoring & Maintenance
-   - Performance metrics
-   - Error tracking
-   - System health monitoring
-   - Backup verification
 
 ## Migration Path
 1. Phase 1: Core Infrastructure
